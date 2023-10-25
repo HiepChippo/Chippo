@@ -1,27 +1,42 @@
 package gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import connectDB.ConnectDB;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.Cursor;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.border.MatteBorder;
-import javax.swing.JPasswordField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-public class Login_GUI extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
+
+import bus.TaiKhoan_BUS;
+import connectDB.ConnectDB;
+import customdesign.GradientPanel;
+import entities.TaiKhoan;
+
+public class Login_GUI extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private GradientPanel panel_1;
+	private JButton btnDangNhap;
+	private JPanel panel;
 	private JTextField textTenDangNhap;
 	private JPasswordField passwordField;
+	private JButton btnQuenMatKhau;
+	private JLabel lblThongBao;
+	private TaiKhoan_BUS taiKhoan_BUS = new TaiKhoan_BUS();
+	protected static Login_GUI frame;
 
 	/**
 	 * Launch the application.
@@ -30,16 +45,20 @@ public class Login_GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login_GUI frame = new Login_GUI();
+					frame = new Login_GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		ConnectDB.getConnection();
+		try {
+			ConnectDB.getInstance().connect();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -49,21 +68,25 @@ public class Login_GUI extends JFrame {
 		setSize(720, 360);
 		setLocationRelativeTo(null);
 		setTitle("Phầm mềm quản lý lương sản phẩm");
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel = new JPanel();
+		panel.setBorder(null);
 		panel.setBounds(0, 0, 245, 323);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1 = new GradientPanel();
+//		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBorder(new LineBorder(Color.WHITE));
+		panel_1.setkStartColor(Color.decode("#3494E6"));
+		panel_1.setkGradientFocus(300);
+		panel_1.setkEndColor(Color.decode("#EC6EAD"));
 		panel_1.setBounds(245, 0, 461, 323);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -75,38 +98,96 @@ public class Login_GUI extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Tên đăng nhập:");
 		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		lblNewLabel_1.setBounds(21, 108, 108, 21);
+		lblNewLabel_1.setBounds(21, 103, 108, 21);
 		panel_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Mật khẩu:");
 		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		lblNewLabel_1_1.setBounds(21, 163, 94, 21);
+		lblNewLabel_1_1.setBounds(21, 152, 94, 21);
 		panel_1.add(lblNewLabel_1_1);
 		
 		textTenDangNhap = new JTextField();
 		textTenDangNhap.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		textTenDangNhap.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		textTenDangNhap.setBounds(132, 103, 279, 30);
+		textTenDangNhap.setBounds(132, 99, 279, 30);
 		
 		panel_1.add(textTenDangNhap);
 		textTenDangNhap.setColumns(10);
 		
-		JButton btnDangNhap = new JButton("Đăng nhập");
+		btnDangNhap = new JButton("Đăng nhập");
+		btnDangNhap.setIcon(new ImageIcon(getClass().getResource("/icon/enter.png")));
+		btnDangNhap.setOpaque(true);
 		btnDangNhap.setBackground(new Color(23, 191, 86));
-		btnDangNhap.setBorder(new EmptyBorder(1, 1, 1, 1));
+		btnDangNhap.setBorder(null);
 		btnDangNhap.setForeground(Color.WHITE);
 		btnDangNhap.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnDangNhap.setBounds(132, 205, 279, 36);
-		btnDangNhap.setOpaque(true);
+		btnDangNhap.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel_1.add(btnDangNhap);
 		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		passwordField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
-		passwordField.setBounds(132, 154, 279, 30);
+		passwordField.setBounds(132, 143, 279, 30);
 		panel_1.add(passwordField);
 		
-		JButton btnHienMatKhau = new JButton("New button");
-		btnHienMatKhau.setBounds(371, 155, 40, 30);
-		panel_1.add(btnHienMatKhau);
+		btnQuenMatKhau = new JButton("Quên mật khẩu?");
+		btnQuenMatKhau.setForeground(new Color(255, 255, 255));
+		btnQuenMatKhau.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnQuenMatKhau.setBorder(null);
+		btnQuenMatKhau.setBackground(new Color(255, 0, 0));
+		btnQuenMatKhau.setBounds(309, 269, 102, 21);
+		btnQuenMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnQuenMatKhau.setOpaque(true);
+		
+		panel_1.add(btnQuenMatKhau);
+		
+		lblThongBao = new JLabel("");
+		lblThongBao.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+		lblThongBao.setForeground(new Color(0, 0, 0));
+		lblThongBao.setBounds(132, 183, 279, 21);
+		panel_1.add(lblThongBao);
+		
+		btnDangNhap.addActionListener(this);
+		btnDangNhap.addActionListener(this);
 	}
+
+	private boolean kiemTraDangNhap() {
+		String tenTaiKhoan = textTenDangNhap.getText();
+		@SuppressWarnings("deprecation")
+		String matKhau = passwordField.getText();
+		if(tenTaiKhoan.trim().length() == 0) {
+			lblThongBao.setText("Vui lòng điền tên đăng nhập!");
+			return false;
+		}
+		else if (matKhau.trim().length() == 0) {
+			lblThongBao.setText("Vui lòng điền mật khẩu!");
+			return false;
+		}
+		TaiKhoan tk = taiKhoan_BUS.getTaiKhoan(tenTaiKhoan);
+		if(tk == null || matKhau.compareTo(tk.getMatKhau()) != 0) {
+			lblThongBao.setText("Thông tin tài khoản hoặc mật khẩu không chính xác!");
+			return false;
+		}
+		return true;
+	}
+	
+	private void moTrangChu() {
+		Main_GUI main_GUI = new Main_GUI();
+		main_GUI.openMain_GUI();;
+		frame.dispose();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Object o = e.getSource();
+		if(o.equals(btnDangNhap)) {
+			moTrangChu();
+			if(kiemTraDangNhap()) {
+				
+			}
+		}
+	}
+
 }
