@@ -22,6 +22,7 @@ import javax.swing.border.MatteBorder;
 
 import bus.TaiKhoan_BUS;
 import connectDB.ConnectDB;
+import customdesign.ButtonCustom;
 import customdesign.GradientPanel;
 import entities.TaiKhoan;
 
@@ -84,9 +85,9 @@ public class Login_GUI extends JFrame implements ActionListener{
 		panel_1 = new GradientPanel();
 //		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBorder(new LineBorder(Color.WHITE));
-		panel_1.setkStartColor(Color.decode("#3494E6"));
-		panel_1.setkGradientFocus(300);
-		panel_1.setkEndColor(Color.decode("#EC6EAD"));
+		panel_1.setkStartColor(Color.decode("#00d2ff"));
+		panel_1.setkGradientFocus(500);
+		panel_1.setkEndColor(Color.decode("#928DAB"));
 		panel_1.setBounds(245, 0, 461, 323);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -97,13 +98,13 @@ public class Login_GUI extends JFrame implements ActionListener{
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Tên đăng nhập:");
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		lblNewLabel_1.setBounds(21, 103, 108, 21);
+		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(10, 101, 108, 21);
 		panel_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Mật khẩu:");
-		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		lblNewLabel_1_1.setBounds(21, 152, 94, 21);
+		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		lblNewLabel_1_1.setBounds(10, 145, 94, 21);
 		panel_1.add(lblNewLabel_1_1);
 		
 		textTenDangNhap = new JTextField();
@@ -114,8 +115,9 @@ public class Login_GUI extends JFrame implements ActionListener{
 		panel_1.add(textTenDangNhap);
 		textTenDangNhap.setColumns(10);
 		
-		btnDangNhap = new JButton("Đăng nhập");
-		btnDangNhap.setIcon(new ImageIcon(getClass().getResource("/icon/enter.png")));
+		btnDangNhap = new JButton();
+		btnDangNhap.setText("Đăng nhập");
+		btnDangNhap.setIcon(new ImageIcon(Login_GUI.class.getResource("/icon/icons8_enter_25px.png")));
 		btnDangNhap.setOpaque(true);
 		btnDangNhap.setBackground(new Color(23, 191, 86));
 		btnDangNhap.setBorder(null);
@@ -133,10 +135,10 @@ public class Login_GUI extends JFrame implements ActionListener{
 		
 		btnQuenMatKhau = new JButton("Quên mật khẩu?");
 		btnQuenMatKhau.setForeground(new Color(255, 255, 255));
-		btnQuenMatKhau.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnQuenMatKhau.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		btnQuenMatKhau.setBorder(null);
 		btnQuenMatKhau.setBackground(new Color(255, 0, 0));
-		btnQuenMatKhau.setBounds(309, 269, 102, 21);
+		btnQuenMatKhau.setBounds(296, 260, 115, 30);
 		btnQuenMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnQuenMatKhau.setOpaque(true);
 		

@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
-public class Main_GUI extends JFrame {
+public class Test extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnTrangChu;
@@ -31,7 +31,7 @@ public class Main_GUI extends JFrame {
 	private JButton btnTaiKhoan;
 	private JButton btnNhanVien;
 	private JButton btnCongNhan;
-	private static Main_GUI mainFrame = new Main_GUI();
+	private static Test mainFrame = new Test();
 
 	/**
 	 * Launch the application.
@@ -52,7 +52,7 @@ public class Main_GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Main_GUI() {
+	public Test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1800, 800);
 //		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -73,8 +73,6 @@ public class Main_GUI extends JFrame {
 		contentPane.add(panel);
 		
 		btnTrangChu = new JButton("Trang chủ");
-		btnTrangChu.setIcon(new ImageIcon(Main_GUI.class.getResource("/icon/icons8_home_40px_1.png")));
-		btnTrangChu.setForeground(new Color(255, 255, 255));
 		btnTrangChu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnTrangChu.setOpaque(false);
 		btnTrangChu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -84,8 +82,6 @@ public class Main_GUI extends JFrame {
 		panel.add(btnTrangChu);
 		
 		btnCongNhan = new JButton("Công nhân");
-		btnCongNhan.setIcon(new ImageIcon(Main_GUI.class.getResource("/icon/icons8_worker_40px.png")));
-		btnCongNhan.setForeground(new Color(255, 255, 255));
 		btnCongNhan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCongNhan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +95,6 @@ public class Main_GUI extends JFrame {
 		panel.add(btnCongNhan);
 		
 		btnNhanVien = new JButton("Nhân viên");
-		btnNhanVien.setForeground(new Color(255, 255, 255));
 		btnNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNhanVien.setOpaque(false);
 		btnNhanVien.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -109,8 +104,6 @@ public class Main_GUI extends JFrame {
 		panel.add(btnNhanVien);
 		
 		btnTaiKhoan = new JButton("Tài khoản");
-		btnTaiKhoan.setIcon(new ImageIcon(Main_GUI.class.getResource("/icon/icons8_user_40px.png")));
-		btnTaiKhoan.setForeground(new Color(255, 255, 255));
 		btnTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnTaiKhoan.setOpaque(false);
 		btnTaiKhoan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -120,8 +113,6 @@ public class Main_GUI extends JFrame {
 		panel.add(btnTaiKhoan);
 		
 		btnHoTro = new JButton("Hỗ trợ");
-		btnHoTro.setIcon(new ImageIcon(Main_GUI.class.getResource("/icon/icons8_help_40px.png")));
-		btnHoTro.setForeground(new Color(255, 255, 255));
 		btnHoTro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnHoTro.setOpaque(false);
 		btnHoTro.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -131,16 +122,18 @@ public class Main_GUI extends JFrame {
 		panel.add(btnHoTro);
 		
 		btnDangXuat = new JButton("Đăng xuất");
-		btnDangXuat.setForeground(new Color(255, 255, 255));
 		btnDangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnDangXuat.setIcon(new ImageIcon(Main_GUI.class.getResource("/icon/icons8_exit_40px_1.png")));
+		btnDangXuat.setIcon(new ImageIcon(Test.class.getResource("/icon/icons8_exit_40px_1.png")));
 		btnDangXuat.setOpaque(false);
 		btnDangXuat.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		btnDangXuat.setBorder(null);
 		btnDangXuat.setBackground(Color.WHITE);
 		btnDangXuat.setBounds(10, 737, 260, 55);
 		panel.add(btnDangXuat);
-
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(137, 135, 1, 1);
+		panel.add(layeredPane);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(281, 0, 1252, 800);
@@ -151,8 +144,12 @@ public class Main_GUI extends JFrame {
 		panel_1_1.setBorder(null);
 		panel_1_1.setBackground(new Color(228, 228, 228));
 		panel_1_1.setBounds(0, 0, 1252, 40);
-//		panel_1_1.setSize(panel_1.getMaximumSize().width, 40);
+		panel_1_1.setSize(panel_1.getMaximumSize().width, 40);
 		panel_1.add(panel_1_1);
 		panel_1_1.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(1178, 10, 65, 21);
+		panel_1_1.add(btnNewButton);
 	}
 }
