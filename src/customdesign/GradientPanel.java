@@ -60,12 +60,7 @@ public class GradientPanel extends JPanel {
         this.kGradientFocus = kGradientFocus;
     }
   
- 
-    
-    
-
     public GradientPanel() {
-
         if (kTransparentControls) {
             setBg(true);
         } else {
@@ -97,7 +92,6 @@ public class GradientPanel extends JPanel {
     private void setBg(boolean isOpaque) {
         Component[] components = this.getComponents();
         for (Component component : components) {
-
             ((JLabel) component).setOpaque(isOpaque);
             ((JCheckBox) component).setOpaque(isOpaque);
             ((JTextField) component).setOpaque(isOpaque);

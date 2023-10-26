@@ -31,6 +31,9 @@ public class TaiKhoan {
 	public void setLoaiTaiKhoan(String loaiTaiKhoan) {
 		this.loaiTaiKhoan = loaiTaiKhoan;
 	}
+	public void layLaiMatKhau() {
+		
+	}
 	
 	@Override
 	public String toString() {

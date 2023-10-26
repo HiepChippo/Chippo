@@ -29,9 +29,9 @@ import entities.TaiKhoan;
 public class Login_GUI extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private GradientPanel panel_1;
+	private JPanel panel_1;
 	private JButton btnDangNhap;
-	private JPanel panel;
+	private GradientPanel panel;
 	private JTextField textTenDangNhap;
 	private JPasswordField passwordField;
 	private JButton btnQuenMatKhau;
@@ -43,31 +43,22 @@ public class Login_GUI extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new Login_GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		try {
-			ConnectDB.getInstance().connect();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		openLogin_GUI();
 	}
+	
+	public static void openLogin_GUI() {
+		frame = new Login_GUI();
+		frame.setVisible(true);
+	}
+	
 	/**
 	 * Create the frame.
 	 */
 	public Login_GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		setSize(720, 360);
+		setSize(1800, 800);
 		setLocationRelativeTo(null);
+//		setUndecorated(true);
 		setTitle("Phầm mềm quản lý lương sản phẩm");
 		setResizable(false);
 		contentPane = new JPanel();
@@ -76,41 +67,44 @@ public class Login_GUI extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panel = new JPanel();
+		panel = new GradientPanel();
 		panel.setBorder(null);
-		panel.setBounds(0, 0, 245, 323);
-		contentPane.add(panel);
+		panel.setBounds(0, 0, 1540, 763);
 		panel.setLayout(null);
+		panel.setBorder(new LineBorder(Color.WHITE));
+		panel.setkStartColor(Color.decode("#00d2ff"));
+		panel.setkGradientFocus(50);
+		panel.setkEndColor(Color.decode("#928DAB"));
+		contentPane.add(panel);
 		
-		panel_1 = new GradientPanel();
+		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
 //		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBorder(new LineBorder(Color.WHITE));
-		panel_1.setkStartColor(Color.decode("#00d2ff"));
-		panel_1.setkGradientFocus(500);
-		panel_1.setkEndColor(Color.decode("#928DAB"));
-		panel_1.setBounds(245, 0, 461, 323);
-		contentPane.add(panel_1);
+		panel_1.setBounds(884, 96, 520, 363);
+		panel_1.setOpaque(true);
+		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Đăng nhập");
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		lblNewLabel.setBounds(166, 27, 156, 44);
+		lblNewLabel.setBounds(191, 27, 156, 44);
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Tên đăng nhập:");
 		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(10, 101, 108, 21);
+		lblNewLabel_1.setBounds(30, 130, 108, 21);
 		panel_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Mật khẩu:");
 		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		lblNewLabel_1_1.setBounds(10, 145, 94, 21);
+		lblNewLabel_1_1.setBounds(30, 174, 94, 21);
 		panel_1.add(lblNewLabel_1_1);
 		
 		textTenDangNhap = new JTextField();
 		textTenDangNhap.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		textTenDangNhap.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		textTenDangNhap.setBounds(132, 99, 279, 30);
+		textTenDangNhap.setBounds(152, 128, 279, 30);
 		
 		panel_1.add(textTenDangNhap);
 		textTenDangNhap.setColumns(10);
@@ -123,14 +117,14 @@ public class Login_GUI extends JFrame implements ActionListener{
 		btnDangNhap.setBorder(null);
 		btnDangNhap.setForeground(Color.WHITE);
 		btnDangNhap.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnDangNhap.setBounds(132, 205, 279, 36);
+		btnDangNhap.setBounds(152, 234, 279, 36);
 		btnDangNhap.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel_1.add(btnDangNhap);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		passwordField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
-		passwordField.setBounds(132, 143, 279, 30);
+		passwordField.setBounds(152, 172, 279, 30);
 		panel_1.add(passwordField);
 		
 		btnQuenMatKhau = new JButton("Quên mật khẩu?");
@@ -138,7 +132,7 @@ public class Login_GUI extends JFrame implements ActionListener{
 		btnQuenMatKhau.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		btnQuenMatKhau.setBorder(null);
 		btnQuenMatKhau.setBackground(new Color(255, 0, 0));
-		btnQuenMatKhau.setBounds(296, 260, 115, 30);
+		btnQuenMatKhau.setBounds(316, 289, 115, 30);
 		btnQuenMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnQuenMatKhau.setOpaque(true);
 		
@@ -150,6 +144,18 @@ public class Login_GUI extends JFrame implements ActionListener{
 		lblThongBao.setBounds(132, 183, 279, 21);
 		panel_1.add(lblThongBao);
 		
+		//
+		try {
+			ConnectDB.getInstance().connect();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Đăng ký sự kiện
 		btnDangNhap.addActionListener(this);
 		btnDangNhap.addActionListener(this);
 	}
@@ -185,9 +191,8 @@ public class Login_GUI extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		Object o = e.getSource();
 		if(o.equals(btnDangNhap)) {
-			moTrangChu();
 			if(kiemTraDangNhap()) {
-				
+				moTrangChu();
 			}
 		}
 	}
