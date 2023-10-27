@@ -1,4 +1,4 @@
-package customdesign;
+package swing;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -12,17 +12,18 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.ComponentUI;
 
-public class ButtonCustom extends JButton {
+public class PanelButton extends JPanel {
 	private Color mainColor;
 	private Color overColor;
 	private Color clickColor;
 	private boolean over;
 	private boolean selected;
 	
-	public ButtonCustom() {
+	public PanelButton() {
 		super();
 		setButton();
 	}
@@ -32,6 +33,7 @@ public class ButtonCustom extends JButton {
 		overColor = new Color(236, 236, 236);
 		
 		setBorder(null);
+		setLayout(null);
 		setOpaque(false);
 		setBackground(mainColor);
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -42,20 +44,17 @@ public class ButtonCustom extends JButton {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				over = true;
+				repaint();
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				over = false;
+				repaint();
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
 				selected = true;
-			}
-		});
-		addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				
+				repaint();
 			}
 		});
 	}

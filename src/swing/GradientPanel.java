@@ -1,4 +1,4 @@
-package customdesign;
+package swing;
 
 
 import java.awt.Color;
@@ -23,8 +23,8 @@ import javax.swing.JToolBar;
  */
 public class GradientPanel extends JPanel {
 
-    public Color kStartColor = Color.MAGENTA;
-    public Color kEndColor = Color.BLUE;
+    public Color kStartColor;
+    public Color kEndColor;
     public boolean kTransparentControls = true;
     public int kGradientFocus = 500;
 

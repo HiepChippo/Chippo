@@ -22,9 +22,9 @@ import javax.swing.border.MatteBorder;
 
 import bus.TaiKhoan_BUS;
 import connectDB.ConnectDB;
-import customdesign.ButtonCustom;
-import customdesign.GradientPanel;
 import entities.TaiKhoan;
+import swing.ButtonCustom;
+import swing.GradientPanel;
 
 public class Login_GUI extends JFrame implements ActionListener{
 
