@@ -151,6 +151,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 					openLogin_GUI();
 					mainFrame.dispose();
 				}
+				btnDangXuat.setSelected(false);
 			}
 		});
 		btnDangXuat.setBounds(0, 695, 282, 55);
@@ -185,6 +186,10 @@ public class Main_GUI extends JFrame implements ActionListener{
 		lblTenNhanVien.setFont(new Font("Segoe UI Semilight", Font.PLAIN, 20));
 		lblTenNhanVien.setBounds(900, 0, 251, 40);
 		panel_1_1.add(lblTenNhanVien);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 38, 1252, 725);
+		panel_1.add(panel_2);
 		
 		
 		JLabel lblTrangChuIcon = new JLabel();
@@ -251,10 +256,10 @@ public class Main_GUI extends JFrame implements ActionListener{
 		listItem.add(btnHoTro);
 		
 		JLabel lblLogo = new JLabel();
-		Image logo = new ImageIcon(Main_GUI.class.getResource("/icon/logo.jpg")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT);
+		Image logo = new ImageIcon(Main_GUI.class.getResource("/icon/logo.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 		ImageIcon logoIcon = new ImageIcon(logo);
 		lblLogo.setIcon(logoIcon);
-		lblLogo.setBounds(10, 10, 150, 150);
+		lblLogo.setBounds(10, 10, 100, 100);
 		panel.add(lblLogo);
 
 		viTriButtonHienTai = -1;
