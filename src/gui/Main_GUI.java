@@ -9,9 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
 
-import swing.PanelButton;
-import swing.GradientPanel;
-import swing.PanelButton;
+import commons.GradientPanel;
+import commons.PanelButton;
 
 import java.awt.Font;
 import java.awt.Frame;
@@ -38,6 +37,13 @@ import javax.swing.JLayeredPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import java.awt.Component;
+
+/**
+ * 
+ * @author Nguyễn Gia Bảo, Ngô Quốc Đạt, Nguyễn Nhất Dương, Võ Văn Nghĩa Hiệp
+ * @version 1.0
+ *
+ */
 
 public class Main_GUI extends JFrame implements ActionListener{
 
@@ -177,7 +183,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setBorder(null);
 		panel_1_1.setBackground(new Color(228, 228, 228));
-		panel_1_1.setBounds(0, 0, 1252, 40);
+		panel_1_1.setBounds(0, 0, 1266, 40);
 //		panel_1_1.setSize(panel_1.getMaximumSize().width, 40);
 		panel_1.add(panel_1_1);
 		panel_1_1.setLayout(null);
@@ -188,7 +194,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 		panel_1_1.add(lblTenNhanVien);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 38, 1252, 725);
+		panel_2.setBounds(0, 38, 1250, 725);
 		panel_1.add(panel_2);
 		
 		
@@ -256,7 +262,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 		listItem.add(btnHoTro);
 		
 		JLabel lblLogo = new JLabel();
-		Image logo = new ImageIcon(Main_GUI.class.getResource("/icon/logo.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+		Image logo = new ImageIcon(Main_GUI.class.getResource("/icon/logo.png")).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon logoIcon = new ImageIcon(logo);
 		lblLogo.setIcon(logoIcon);
 		lblLogo.setBounds(10, 10, 100, 100);

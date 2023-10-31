@@ -1,4 +1,4 @@
-package swing;
+package commons;
 
 
 import java.awt.Color;
