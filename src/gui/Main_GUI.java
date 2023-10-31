@@ -81,7 +81,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 	public Main_GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1800, 800);
-//		setExtendedState(Frame.MAXIMIZED_BOTH);
+		setExtendedState(Frame.MAXIMIZED_BOTH);
 //		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 //		setUndecorated(true);
 		setResizable(false);
@@ -265,7 +265,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 		Image logo = new ImageIcon(Main_GUI.class.getResource("/icon/logo.png")).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon logoIcon = new ImageIcon(logo);
 		lblLogo.setIcon(logoIcon);
-		lblLogo.setBounds(10, 10, 100, 100);
+		lblLogo.setBounds(10, 10, 136, 130);
 		panel.add(lblLogo);
 
 		viTriButtonHienTai = -1;
@@ -296,6 +296,7 @@ public class Main_GUI extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+         
 		
 	}
 }
